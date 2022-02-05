@@ -20,9 +20,10 @@ body {
 
 #instructions thead {
     border-bottom: 1px black solid;
+    background: #d6a2ff;
 }
 
-#instructions tr:not(.bitfields):nth-child(2n) {
+#instructions tbody tr:not(.bitfields):nth-child(even) {
     backdrop-filter: brightness(120%);
 }
 
@@ -44,6 +45,7 @@ body {
 #instructions .bitfields td {
     padding-left: 0.3rem;
     border-left: 1px black solid;
+    border-bottom: 1px black solid;
 }
 
 #mips_formats {
@@ -55,9 +57,10 @@ body {
 
 #mips_formats thead {
     border-bottom: 1px black solid;
+    background: #d6a2ff;
 }
 
-#mips_formats tr:nth-child(2n) {
+#mips_formats tbody tr:nth-child(odd) {
     backdrop-filter: brightness(120%);
 }
 
