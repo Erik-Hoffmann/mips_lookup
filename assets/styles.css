@@ -22,8 +22,28 @@ body {
     border-bottom: 1px black solid;
 }
 
-#instructions tr:nth-child(2n) {
+#instructions tr:not(.bitfields):nth-child(2n) {
     backdrop-filter: brightness(120%);
+}
+
+#instructions :not(.active) .tooltip-toggler::after {
+    content: "\25BC";
+    display: inline-block;
+    transform: rotate(270deg);
+}
+
+#instructions .active .tooltip-toggler::after {
+    transform: rotate(0);
+}
+
+#instructions .bitfields {
+    background: #e3e27d;
+    table-layout: fixed;
+}
+
+#instructions .bitfields td {
+    padding-left: 0.3rem;
+    border-left: 1px black solid;
 }
 
 #mips_formats {
