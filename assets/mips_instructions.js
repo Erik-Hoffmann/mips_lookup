@@ -1,20 +1,3 @@
-let instruction_table;
-let instructions;
-
-$(document).ready(() => {
-    instruction_table = $("#instructions");
-    instruction_table.append(mips_head());
-    instructions = instruction_table.children("tbody");
-
-    build_mips_table();
-
-    document.getElementById("mips_search").addEventListener("input", (e) => {
-        mips_search(e.srcElement.value);
-    });
-
-    tooltip_trigger()
-});
-
 function mips_head() {
     return `
     <thead>
@@ -41,51 +24,53 @@ function build_mips_row(el) {
 }
 
 function find_by_hash(hash) {
-    var elem
-    mips.forEach(el=>{
+    var elem;
+    mips.forEach((el) => {
         if (el.instruction.hashCode() === hash) {
-            return elem = el
+            return (elem = el);
         }
-    })
-    return elem
+    });
+    return elem;
 }
 
 function build_tooltip(el, hash) {
-    return build_type(el.bitfields, hash)
+    return build_type(el.bitfields, hash);
 }
 
 function build_type(fields, hash) {
-    var res_head = `<tr class="bitfields" identifier=${hash}><td colspan=2/>`
-    var res_content = `<tr class="bitfields" identifier=${hash}><td colspan=2/>`
-    var count=6
+    var res_head = `<tr class="bitfields" identifier=${hash}><td colspan=2/>`;
+    var res_content = `<tr class="bitfields" identifier=${hash}><td colspan=2/>`;
+    var count = 6;
     for (key in fields) {
-        var span=1
-        if (key==='const') {
-            span=count
+        var span = 1;
+        if (key === "const") {
+            span = count;
         }
-        res_head+=`<td colspan=${span}>${key}</td>`
-        res_content+=`<td colspan=${span}>${fields[key]}</td>`
-        count--
+        res_head += `<td colspan=${span}>${key}</td>`;
+        res_content += `<td colspan=${span}>${fields[key]}</td>`;
+        count--;
     }
-    res_head+=`<td colspan=2/></tr>`
-    res_content+=`<td colspan=2/></tr>`
-    return res_head+=res_content
+    res_head += `<td colspan=2/></tr>`;
+    res_content += `<td colspan=2/></tr>`;
+    return (res_head += res_content);
 }
 
 function tooltip_trigger() {
-    document.querySelectorAll('.instruction').forEach(item => {
-        item.addEventListener("click", (e) =>{
-            var target = item
+    document.querySelectorAll(".instruction").forEach((item) => {
+        item.addEventListener("click", (e) => {
+            var target = item;
             var identifier = target.children[1].innerHTML.hashCode();
-                if ($(target).hasClass('active')) {
-                    $(target).removeAttr('identifier').toggleClass('active')
-                    $(`[identifier=${identifier}]`).remove()
-                } else {
-                    $(target).attr({"identifier": identifier, class:"active"});
-                    $(build_tooltip(find_by_hash(identifier),identifier)).insertAfter($(target))
-                }
-        })
-    })
+            if ($(target).hasClass("active")) {
+                $(target).removeAttr("identifier").toggleClass("active");
+                $(`[identifier=${identifier}]`).remove();
+            } else {
+                $(target).attr({ identifier: identifier, class: "active" });
+                $(
+                    build_tooltip(find_by_hash(identifier), identifier)
+                ).insertAfter($(target));
+            }
+        });
+    });
 }
 
 function build_mips_table() {
@@ -100,7 +85,7 @@ function mips_search(text) {
     else if (text === "R" || text === "I" || text === "J")
         perform_mips_typeselect(text);
     else perform_mips_search(text);
-    tooltip_trigger()
+    tooltip_trigger();
 }
 
 function drop_mips_table() {

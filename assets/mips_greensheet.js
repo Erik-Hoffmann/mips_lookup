@@ -382,7 +382,7 @@ let mips = [
         rtl: "PC ← {(PC + 4)[31:28], address, 00},{ ",
         bitfields: {
             opcode: "000010",
-            const: "target"
+            const: "target",
         },
         type: "J",
     },
@@ -391,7 +391,7 @@ let mips = [
         rtl: "R[31] ← PC + 8\nPC ← {(PC + 4)[31: 28], address,00},{ ",
         bitfields: {
             opcode: "000011",
-            const: "target"
+            const: "target",
         },
         type: "J",
     },
@@ -402,7 +402,7 @@ let mips = [
             opcode: "000100",
             r1: "rs",
             r2: "rt",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -413,7 +413,7 @@ let mips = [
             opcode: "000101",
             r1: "rs",
             r2: "rt",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -425,7 +425,7 @@ let mips = [
             opcode: "000110",
             r1: "rs",
             r2: "00000",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -437,7 +437,7 @@ let mips = [
             opcode: "000111",
             r1: "rs",
             r2: "00000",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -449,7 +449,7 @@ let mips = [
             opcode: "001000",
             r1: "rs",
             r2: "rt",
-            const: "imm"
+            const: "imm",
         },
         type: "I",
     },
@@ -460,7 +460,7 @@ let mips = [
             opcode: "001001",
             r1: "rs",
             r2: "rt",
-            const: "imm"
+            const: "imm",
         },
         type: "I",
     },
@@ -472,7 +472,7 @@ let mips = [
             opcode: "001010",
             r1: "rs",
             r2: "rt",
-            const: "imm"
+            const: "imm",
         },
         type: "I",
     },
@@ -484,7 +484,7 @@ let mips = [
             opcode: "001011",
             r1: "rs",
             r2: "rt",
-            const: "imm"
+            const: "imm",
         },
         type: "I",
     },
@@ -495,7 +495,7 @@ let mips = [
             opcode: "001100",
             r1: "rs",
             r2: "rt",
-            const: "imm"
+            const: "imm",
         },
         type: "I",
     },
@@ -506,7 +506,7 @@ let mips = [
             opcode: "001101",
             r1: "rs",
             r2: "rt",
-            const: "imm"
+            const: "imm",
         },
         type: "I",
     },
@@ -517,7 +517,7 @@ let mips = [
             opcode: "001110",
             r1: "rs",
             r2: "rt",
-            const: "imm"
+            const: "imm",
         },
         type: "I",
     },
@@ -528,7 +528,7 @@ let mips = [
             opcode: "001111",
             r1: "rs",
             r2: "rt",
-            const: "imm"
+            const: "imm",
         },
         type: "I",
     },
@@ -539,7 +539,7 @@ let mips = [
             opcode: "100000",
             r1: "rs",
             r2: "rt",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -551,7 +551,7 @@ let mips = [
             opcode: "100001",
             r1: "rs",
             r2: "rt",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -563,7 +563,7 @@ let mips = [
             opcode: "100011",
             r1: "rs",
             r2: "rt",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -574,7 +574,7 @@ let mips = [
             opcode: "100100",
             r1: "rs",
             r2: "rt",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -586,7 +586,7 @@ let mips = [
             opcode: "100101",
             r1: "rs",
             r2: "rt",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -597,7 +597,7 @@ let mips = [
             opcode: "101000",
             r1: "rs",
             r2: "rt",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -609,7 +609,7 @@ let mips = [
             opcode: "101001",
             r1: "rs",
             r2: "rt",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -621,7 +621,7 @@ let mips = [
             opcode: "101011",
             r1: "rs",
             r2: "rt",
-            const: "offset"
+            const: "offset",
         },
         type: "I",
     },
@@ -647,5 +647,80 @@ let formats = [
         type: "J-Type",
         "31-26": "opcode",
         "25-00": "address",
+    },
+];
+
+let registers = [
+    {
+        name: "$zero",
+        number: "0",
+        use: "The Constant Value 0",
+        "across call safety": NaN,
+    },
+    {
+        name: "$at",
+        number: "1",
+        use: "Assembler temporary",
+        "across call safety": false,
+    },
+    {
+        name: "$v0-$v1",
+        number: "2-3",
+        use: "Values for Function Results and Expression Evaluation",
+        "across call safety": false,
+    },
+    {
+        name: "$a0-$a3",
+        number: "4-7",
+        use: "Arguments",
+        "across call safety": false,
+    },
+    {
+        name: "$t0-$t7",
+        number: "8-15",
+        use: "Temporaries",
+        "across call safety": false,
+    },
+    {
+        name: "$s0-$s7",
+        number: "16-23",
+        use: "Saved Temporaries",
+        "across call safety": true,
+    },
+    {
+        name: "$t8-$t9",
+        number: "24-25",
+        use: "Temporaries",
+        "across call safety": false,
+    },
+    {
+        name: "$k0-$k1",
+        number: "26-27",
+        use: "Reserved for OS Kernel",
+        "across call safety": false,
+    },
+    {
+        name: "$gp",
+        number: "28",
+        use: "Global Pointer",
+        "across call safety": true,
+    },
+    {
+        name: "$sp",
+        number: "29",
+        use: "Stack Pointer",
+        "across call safety": true,
+    },
+    {
+        name: "$fp",
+        number: "30",
+        use: "Frame Pointer",
+        "across call safety": true,
+    },
+    {
+        name: "$ra",
+        number: "31",
+        use: "Return Address",
+        "cross-call-safety": false,
     },
 ];

@@ -20,7 +20,9 @@
 
         <script src="assets/mips_greensheet.js"></script>
         <script src="assets/script.js"></script>
-        <script src="assets/mips_lookup.js"></script>
+        <script src="assets/mips_instructions.js"></script>
+        <script src="assets/mips_formats.js"></script>
+        <script src="assets/mips_registers.js"></script>
         <link rel="stylesheet" href="assets/styles.css" />
         <title>Mips lookup</title>
     </head>
@@ -29,15 +31,23 @@
             <div class="row mb-4">
                 <div class="col-3">
                     <label for="mips_search">Search the Table:</label>
-                    <input class="w-100"type="text" name="mips_search" id="mips_search" />
+                    <input
+                        class="w-100"
+                        type="text"
+                        name="mips_search"
+                        id="mips_search"
+                    />
                 </div>
                 <div class="col-9">
                     <table class="w-100" id="mips_formats"></table>
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <table class="w-100" id="instructions"></table>
+                <div class="col-9">
+                    <table class="w-100" id="mips_instructions"></table>
+                </div>
+                <div class="col-3">
+                    <table class="w-100" id="mips_registers"></table>
                 </div>
             </div>
         </div>
